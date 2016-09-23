@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <meta charset="utf-8">
+  <title>Algoritmos de Priorizaci�n</title>
+</head>
+<body ng-app="misAlgoritmos" >
+  
+	<form name="form-Algoritmos">
+		<div layout="column" ng-controller="algoritmosController">
+		  
+			<h1>Algoritmos de Priorizaci�n</h1>
+			<form name="form-RoundRobin">
+				<div flex id="algoritmo-Rr">
+					<h2>Algoritmo Round Robin</h2>
+					<div >            
+						<span class="input-Center">
+							<label>Cantidad de Procesos: </label>             
+							<input type="number" min="0" max="10" maxlength="2" ng-model="amountProcesses" ng-change="changeAmountProcesses()" required/>
+							<label>Tiempo del Quantum (ms): </label>             
+							<input type="number" min="10" max="100" maxlength="2" ng-model="quantumTime" required/>
+							<label>Tiempo Transici�n (ms): </label>             
+							<input type="number" min="5" max="50" maxlength="2" ng-model="transitionTime" required/>
+							<md-switch ng-disabled="true" aria-label="Disabled switch" ng-model="autoLoad">
+								Cargar Auto
+							</md-switch>
+						</span>
+						<p></p>
+						<span>
+							<table>
+								<tr>
+									<th>Proceso</th>
+									<th>Tiempo Llegada (ms)</th>
+									<th>Tiempo Procesador (Q)</th>
+									<th>Tiempo E/S (Q)</th>
+									<th>Tiempo CPU (Q)</th>
+									<th>Tiempo E/S (Q)</th>
+									<th>Tiempo Procesador (Q)</th>
+								</tr>
+								<tr align="center" border="1" text-align="center" ng-repeat="pcs in processes">
+									<td align="center" >{{pcs.name}}</td>
+									<td align="center" ><input class="input-Mid" ng-model="pcs.timeA" type="number" >{{pcs.timeA}}</input></td>
+									<td align="center" ><input class="input-Small" ng-model="pcs.q1" type="number" >{{pcs.q1}}</input></td>
+									<td align="center" ><input class="input-Small" ng-model="pcs.qES1" type="number" >{{pcs.qES1}}</input></td>
+									<td align="center" ><input class="input-Small" ng-model="pcs.q2" type="number" >{{pcs.q2}}</input></td>
+									<td align="center" ><input class="input-Small" ng-model="pcs.qES2" type="number" >{{pcs.qES2}}</input></td>
+									<td align="center" ><input class="input-Small" ng-model="pcs.q3" type="number" >{{pcs.q3}}</input></td>
+								</tr> 
+							</table>
+							<p/>							
+						</span>						
+					</div>					
+				</div>
+				<div>
+					<button ng-disabled="run || amountProcesses == 0" ng-click="startProcesses()" >Iniciar</button>
+					<button ng-show="run" ng-click="nextStep()" >Siguiente</button>
+					<button ng-disabled="!run" ng-click="stopProcess()" >Parar</button>
+				</div>
+				<div>
+					<h3>Cola de Procesos</h3>
+					<p></p>					
+					<md-virtual-repeat-container md-orient-horizontal>
+						<div md-virtual-repeat="tail in tailP" class="repeated-item" flex>
+							<label ng-show="tail.q1 > 0">Q = {{tail.q1}}</label>
+							<label ng-show="tail.q1 == 0 && tail.q2 > 0">Q = {{tail.q2}}</label>
+							<label ng-show="tail.q1 == 0 && tail.q2 == 0">Q = {{tail.q3}}</label>
+							<label>{{tail.name}}</label>
+						</div>
+					</md-virtual-repeat-container>				
+					<p></p>
+				</div>
+				<div>
+					<h3>Diagrama de Grantt</h3>
+					<p></p>
+					<div layout="row" ng-repeat="pos in diagramGratte">
+						<label> </label>
+					</div>
+					<p></p>
+				</div>			
+				
+			<form>
+			
+			<div flex id="algoritmo-2">
+
+			</div>
+
+			<div flex id="algoritmo-3">        
+
+			</div>
+		</div>
+	<form>  
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<script src="https://rawgit.com/angular/bower-angular-sanitize/master/angular-sanitize.min.js"></script>
+	<script src="algoritmosController.js"></script>
+</body>
+</html>
