@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>  
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   <link href="style.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <title>Algoritmos de Priorizaci�n</title>
@@ -16,14 +16,14 @@
 				<div flex id="algoritmo-Rr">
 					<h2>Algoritmo Round Robin</h2>
 					<div >            
-						<span class="input-Center">
+						<span class="input-Center" layout="row">
 							<label>Cantidad de Procesos: </label>             
 							<input type="number" min="0" max="10" maxlength="2" ng-model="amountProcesses" ng-change="changeAmountProcesses()" required/>
 							<label>Tiempo del Quantum (ms): </label>             
 							<input type="number" min="10" max="100" maxlength="2" ng-model="quantumTime" required/>
 							<label>Tiempo Transici�n (ms): </label>             
 							<input type="number" min="5" max="50" maxlength="2" ng-model="transitionTime" required/>
-							<md-switch ng-disabled="true" aria-label="Disabled switch" ng-model="autoLoad">
+							<md-switch class="text-Elem" aria-label="Disabled switch" ng-model="autoLoad">
 								Cargar Auto
 							</md-switch>
 						</span>
@@ -96,6 +96,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
 	<script src="https://rawgit.com/angular/bower-angular-sanitize/master/angular-sanitize.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 	<script src="algoritmosController.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 (function(angular) {
   'use strict';
-  var misAlgoritmos = angular.module("misAlgoritmos", ["ngSanitize"]);
+  var misAlgoritmos = angular.module("misAlgoritmos", ["ngSanitize", 'ngMaterial']);
 })(window.angular);
 
 (function(angular) {

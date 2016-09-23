@@ -45,6 +45,11 @@ input {
 	padding-left: 15%;
 }
 
+.text-Elem {
+  font-family: Verdana, Helvetica;
+  color: gray;
+}
+
 b {
   font-size: 12px;
   font-family: Verdana, Helvetica;
